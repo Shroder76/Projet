@@ -12,7 +12,8 @@ public class Calculatrice {
 		this.pile = new Stack<>();
 	}
 	
-	private boolean estUnOperateur(String ope) {
+	// public pour les tests
+	public boolean estUnOperateur(String ope) {
 		for(int i=0; i<this.operateurs.length; i++ ) {
 			if(ope.equals(this.operateurs[i]))
 				return true;
@@ -21,7 +22,8 @@ public class Calculatrice {
 		return false;
 	}
 	
-	private boolean estUneOperande(String ope) {
+	// public pour lrd tests
+	public boolean estUneOperande(String ope) {
 		try {
 			Double.parseDouble(ope);
 		} catch(NumberFormatException e) {
@@ -31,7 +33,8 @@ public class Calculatrice {
 		return true;
 	}
 	
-	private void definirOperateur(String operateurString) {
+	// public pour les tests
+	public void definirOperateur(String operateurString) {
 		switch(operateurString) {
 			case "+" :
 			case "PLUS" :
@@ -117,6 +120,12 @@ public class Calculatrice {
 		if(estUnOperateur(entree)) {
 			
 			definirOperateur(entree);
+			
+			if(nbOperande==1 && this.pile.empty())
+				return false;
+			
+			if(nbOperande==2 && this.pile.size()<2)
+				return false;
 	
 			operande2 = pile.pop();
 			try {
@@ -147,10 +156,10 @@ public class Calculatrice {
 	
 	public boolean evaluer(String calculAEffectuer) {
 		calculAEffectuer = calculAEffectuer.toUpperCase();
-		String[] trouverUnNom = calculAEffectuer.split(" ");
+		String[] calculAEffectuerSplit = calculAEffectuer.split(" ");
 		
-		for(int i=0; i<trouverUnNom.length; i++) {
-			if(!entree(trouverUnNom[i]))
+		for(int i=0; i<calculAEffectuerSplit.length; i++) {
+			if(!entree(calculAEffectuerSplit[i]))
 				return false;
 		}
 		
@@ -159,6 +168,11 @@ public class Calculatrice {
 	
 	public double sommet() {
 		return this.pile.peek();
+	}
+	
+	// pour les tests
+	public Operateur getOperateur() {
+		return this.operateur;
 	}
 	
 	public String toString() {
