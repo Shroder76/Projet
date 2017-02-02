@@ -1,1 +1,1 @@
-# ProjetPOO
+- Les quatre opérations de base : addition, soustraction, multiplication et division
