@@ -4,7 +4,9 @@ import java.util.Stack;
 
 public class Calculatrice {
 	private Stack<Double> pile;
-	private final String[] operateurs = {"+", "PLUS", "-", "MOINS", "*", "FOIS", "/", "DIVISE"};
+	private final String[] operateurs = {"+", "PLUS", "-", "MOINS", "*", "FOIS", "/", "DIVISE", "SQRT", "RACINE"};
+	private Operateur operateur;
+	private int nbOperande;
 	
 	public Calculatrice() {
 		this.pile = new Stack<>();
@@ -29,56 +31,62 @@ public class Calculatrice {
 		return true;
 	}
 	
-	private Operateur definirOperateur(String operateurString) {
-		Operateur operateur = null;
-		
+	private void definirOperateur(String operateurString) {
 		switch(operateurString) {
 			case "+" :
 			case "PLUS" :
 				operateur = Operateur.ADDITION;
+				this.nbOperande = 2;
 				break;
 				
 			case "-" :
 			case "MOINS" :
 				operateur = Operateur.SOUSTRACTION;
+				this.nbOperande = 2;
 				break;
 					
 			case "*" :
 			case "FOIS" :
 				operateur = Operateur.MULTIPLICATION;
+				this.nbOperande = 2;
 				break;
 					
 			case "/" :
 			case "DIVISE" :
 				operateur = Operateur.DIVISION;
+				this.nbOperande = 2;
+				
+			case "SQRT" :
+			case "RACINE" :
+				operateur = Operateur.RACINE;
+				this.nbOperande = 1;
 				break;		
 		}
-		
-		return operateur;
 	}
 	
 	public boolean entree(String entree) {
 		entree = entree.toUpperCase();
-		
-		Operateur operateur = null;
-		
+			
 		double operande1, operande2;
 		double resultat;
 		
 		if(estUnOperateur(entree)) {
 			
-			operateur = definirOperateur(entree);
-			
-			if(pile.size()>=2) {
-				operande2 = pile.pop();
-				operande1 = pile.pop();
-				try {
-					resultat = operateur.operation(operande1, operande2);
+			definirOperateur(entree);
+	
+			operande2 = pile.pop();
+			try {
+				if(nbOperande==2) {
+					operande1 = pile.pop();
+					resultat = this.operateur.operation(operande1, operande2);
 					this.pile.push(resultat);
-				} catch(IllegalArgumentException e) {
+				} else if(nbOperande==1) {	
+					resultat = this.operateur.operation(operande2);
+					this.pile.push(resultat);
+				} else
 					return false;
-				}
-			} else {
+				
+			} catch(IllegalArgumentException e) {
 				return false;
 			}
 			
