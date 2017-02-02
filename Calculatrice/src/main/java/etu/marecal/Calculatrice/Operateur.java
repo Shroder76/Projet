@@ -62,6 +62,36 @@ public enum Operateur {
 		public double operation(double operande1, double operande2) {
 			return 0.0;
 		}
+	},
+	
+	SIN {
+		public double operation(double operande) {
+			return Math.sin(operande);
+		}
+		
+		public double operation(double operande1, double operande2) {
+			return 0.0;
+		}
+	},
+	
+	COS {
+		public double operation(double operande) {
+			return Math.cos(operande);
+		}
+		
+		public double operation(double operande1, double operande2) {
+			return 0.0;
+		}
+	},
+	
+	TAN {
+		public double operation(double operande) {
+			return Math.tan(operande);
+		}
+		
+		public double operation(double operande1, double operande2) {
+			return 0.0;
+		}
 	};
 
 	public abstract double operation(double operande1, double operande2);
