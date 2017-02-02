@@ -4,3 +4,5 @@
 - Inverse et opposé
 - Puissance n-ième
 - Factorielle
+
+- Test unitaire de Operateur.java et Calculatrice.java
