@@ -122,6 +122,36 @@ public enum Operateur {
 		public double operation(double operande) {
 			return 0.0;
 		}
+	},
+	
+	FACTORIELLE {
+		public double operation(double operande) {
+			// On calcule la factorielle en utilisant la fonction Gamma d'Euler
+			double x = operande+1;
+			
+			double tmp = (x - 0.5) * Math.log(x + 4.5) - (x + 4.5);
+			double ser = 1.0 + 76.18009173    / (x + 0)   - 86.50532033    / (x + 1)
+							 + 24.01409822    / (x + 2)   -  1.231739516   / (x + 3)
+							 +  0.00120858003 / (x + 4)   -  0.00000536382 / (x + 5);
+			
+			double logGamma = tmp + Math.log(ser * Math.sqrt(2 * Math.PI));
+			double gamma = Math.exp(logGamma);
+			
+			double res = gamma;
+			
+			// Si le paramètre de la factorielle est un entier le résultat retourner est un entier
+			int i;
+			double d = operande;
+			i = (int)d;
+			if (i == d)
+				res = (double)Math.round(gamma);
+				
+			return res;
+		}
+		
+		public double operation(double operande1, double operande2) {
+			return 0.0;
+		}
 	};
 
 	public abstract double operation(double operande1, double operande2);
