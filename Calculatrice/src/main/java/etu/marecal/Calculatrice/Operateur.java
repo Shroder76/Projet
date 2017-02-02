@@ -52,6 +52,16 @@ public enum Operateur {
 		public double operation(double operande1, double operande2) {
 			return 0.0;
 		}
+	},
+	
+	CARRE {
+		public double operation(double operande) {
+			return Math.pow(operande, 2.0);
+		}
+		
+		public double operation(double operande1, double operande2) {
+			return 0.0;
+		}
 	};
 
 	public abstract double operation(double operande1, double operande2);
