@@ -112,6 +112,16 @@ public enum Operateur {
 		public double operation(double operande1, double operande2) {
 			return 0.0;
 		}
+	},
+	
+	PUISSANCE {
+		public double operation(double operande1, double operande2) {
+			return Math.pow(operande1, operande2);
+		}
+		
+		public double operation(double operande) {
+			return 0.0;
+		}
 	};
 
 	public abstract double operation(double operande1, double operande2);
