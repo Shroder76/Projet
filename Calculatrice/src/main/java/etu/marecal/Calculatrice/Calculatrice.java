@@ -2,16 +2,30 @@ package etu.marecal.Calculatrice;
 
 import java.util.Stack;
 
+/**
+ * 
+ * @author Thomas Marécal
+ * @version 1.6
+ * Calculatrice en notation polonaise inversé.
+ */
 public class Calculatrice {
 	private Stack<Double> pile;
 	private final String[] operateurs = {"+", "PLUS", "-", "MOINS", "*", "FOIS", "/", "DIVISE", "SQRT", "RACINE", "CARRE", "SIN", "COS", "TAN", "INVERSE", "INV", "OPPOSE", "OPP", "PUISSANCE", "PUISS", "FACTORIELLE", "FACT"};
 	private Operateur operateur;
 	private int nbOperande;
 	
+	/**
+	 * Construit une calculatrice.
+	 */
 	public Calculatrice() {
 		this.pile = new Stack<>();
 	}
 	
+	/**
+	 * 
+	 * @param ope L'opérateur a testé.
+	 * @return Retourne si oui ou non la chaine passé en paramètre est un opérateur.
+	 */
 	// public pour les tests
 	public boolean estUnOperateur(String ope) {
 		for(int i=0; i<this.operateurs.length; i++ ) {
@@ -22,7 +36,12 @@ public class Calculatrice {
 		return false;
 	}
 	
-	// public pour lrd tests
+	/**
+	 * 
+	 * @param ope L'opérande a testé.
+	 * @return Retourne si oui ou non la chaine passé en paramètre est une opérande.
+	 */
+	// public pour les tests
 	public boolean estUneOperande(String ope) {
 		try {
 			Double.parseDouble(ope);
@@ -33,6 +52,10 @@ public class Calculatrice {
 		return true;
 	}
 	
+	/**
+	 * 
+	 * @param operateurString Chaine a transformé en Operateur.
+	 */
 	// public pour les tests
 	public void definirOperateur(String operateurString) {
 		switch(operateurString) {
@@ -111,6 +134,11 @@ public class Calculatrice {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param entree Operateur ou opérande.
+	 * @return Retourne si oui ou non la chaine passé en paramètre est un opérateur ou une opérande.
+	 */
 	public boolean entree(String entree) {
 		entree = entree.toUpperCase();
 			
@@ -154,6 +182,11 @@ public class Calculatrice {
 		return true;
 	}
 	
+	/**
+	 * 
+	 * @param calculAEffectuer Chaine à évaluer.
+	 * @return Retourne si oui ou non la chaine a pu être évalué.
+	 */
 	public boolean evaluer(String calculAEffectuer) {
 		calculAEffectuer = calculAEffectuer.toUpperCase();
 		String[] calculAEffectuerSplit = calculAEffectuer.split(" ");
@@ -166,15 +199,26 @@ public class Calculatrice {
 		return true;
 	}
 	
+	/**
+	 * 
+	 * @return Retourne le sommet de la pile.
+	 */
 	public double sommet() {
 		return this.pile.peek();
 	}
 	
+	/**
+	 * 
+	 * @return Retourne le dernier opérateur utilisé.
+	 */
 	// pour les tests
 	public Operateur getOperateur() {
 		return this.operateur;
 	}
 	
+	/**
+	 * Retourne sous forme de chaine de caractère l'objet calculatrice.
+	 */
 	public String toString() {
 		return "Etat de la pile : " + pile.toString();
 	}

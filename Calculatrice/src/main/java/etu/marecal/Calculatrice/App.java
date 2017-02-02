@@ -3,6 +3,12 @@ package etu.marecal.Calculatrice;
 import java.util.EmptyStackException;
 import java.util.Scanner;
 
+/**
+ * 
+ * @author Thomas Marécal
+ * @version 1.0
+ *	Main du programme.
+ */
 public class App {
 	public static void main(String... args) {
 		Calculatrice calculatrice = new Calculatrice();

@@ -6,6 +6,12 @@ import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
 
+/**
+ * 
+ * @author Thomas Marécal
+ * @version 1.0
+ * Test de la classe Calculatrice.
+ */
 public class CalculatriceTest {
 	private static int compteur = 0;
 	private Calculatrice c;

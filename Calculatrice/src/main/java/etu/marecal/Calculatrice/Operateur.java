@@ -1,6 +1,15 @@
 package etu.marecal.Calculatrice;
 
+/**
+ * 
+ * @author Thomas Marécal
+ * @version 1.6
+ * Les différentes opérateur disponible.
+ */
 public enum Operateur {
+	/**
+	 * Opérateur addition.
+	 */
 	ADDITION {
 		public double operation(double operande1, double operande2) {
 			return operande1+operande2;
@@ -11,6 +20,9 @@ public enum Operateur {
 		}
 	},
 	
+	/**
+	 * Opérateur soustraction.
+	 */
 	SOUSTRACTION {
 		public double operation(double operande1, double operande2) {
 			return operande1-operande2;
@@ -21,6 +33,9 @@ public enum Operateur {
 		}
 	},
 	
+	/**
+	 * Opérateur multiplication.
+	 */
 	MULTIPLICATION {
 		public double operation(double operande1, double operande2) {
 			return operande1*operande2;
@@ -31,6 +46,9 @@ public enum Operateur {
 		}
 	},
 	
+	/**
+	 * Opérateur division.
+	 */
 	DIVISION {
 		public double operation(double operande1, double operande2) {
 			if(operande2 == 0)
@@ -44,6 +62,9 @@ public enum Operateur {
 		}
 	},
 	
+	/**
+	 * Opérateur racine carré.
+	 */
 	RACINE {
 		public double operation(double operande) {
 			return Math.sqrt(operande);
@@ -54,6 +75,9 @@ public enum Operateur {
 		}
 	},
 	
+	/**
+	 * Opérateur carré.
+	 */
 	CARRE {
 		public double operation(double operande) {
 			return Math.pow(operande, 2.0);
@@ -64,6 +88,9 @@ public enum Operateur {
 		}
 	},
 	
+	/**
+	 * Opérateur sinus.
+	 */
 	SIN {
 		public double operation(double operande) {
 			return Math.sin(operande);
@@ -74,6 +101,9 @@ public enum Operateur {
 		}
 	},
 	
+	/**
+	 * Opérateur cosinus.
+	 */
 	COS {
 		public double operation(double operande) {
 			return Math.cos(operande);
@@ -84,6 +114,9 @@ public enum Operateur {
 		}
 	},
 	
+	/**
+	 * Opérateur tangente.
+	 */
 	TAN {
 		public double operation(double operande) {
 			return Math.tan(operande);
@@ -94,6 +127,9 @@ public enum Operateur {
 		}
 	},
 	
+	/**
+	 * Opérateur inverse.
+	 */
 	INVERSE {
 		public double operation(double operande) {
 			return 1/operande;
@@ -104,6 +140,9 @@ public enum Operateur {
 		}
 	},
 	
+	/**
+	 * Opérateur opposé.
+	 */
 	OPPOSE {
 		public double operation(double operande) {
 			return -operande;
@@ -114,6 +153,9 @@ public enum Operateur {
 		}
 	},
 	
+	/**
+	 * Opérateur puissance n-ième.
+	 */
 	PUISSANCE {
 		public double operation(double operande1, double operande2) {
 			return Math.pow(operande1, operande2);
@@ -124,6 +166,9 @@ public enum Operateur {
 		}
 	},
 	
+	/**
+	 * Opérateur factorielle en utilsant la fonction Gamma d'Euler.
+	 */
 	FACTORIELLE {
 		public double operation(double operande) {
 			// On calcule la factorielle en utilisant la fonction Gamma d'Euler
@@ -154,6 +199,18 @@ public enum Operateur {
 		}
 	};
 
+	/**
+	 * 
+	 * @param operande1 1ère opérande
+	 * @param operande2 2nd opérande
+	 * @return Retourne le résultat de l'opération.
+	 */
 	public abstract double operation(double operande1, double operande2);
+	
+	/**
+	 * 
+	 * @param operande l'opérande
+	 * @return Retourne le résultat de l'opération.
+	 */
 	public abstract double operation(double operande);
 }

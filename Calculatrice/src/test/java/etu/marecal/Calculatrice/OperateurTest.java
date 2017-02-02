@@ -6,6 +6,12 @@ import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
 
+/**
+ * 
+ * @author Thomas Marécal
+ * @version 1.0
+ * Test de l'enum Operateur.
+ */
 public class OperateurTest {
 	private static int compteur = 0;
 	
