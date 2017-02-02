@@ -92,6 +92,26 @@ public enum Operateur {
 		public double operation(double operande1, double operande2) {
 			return 0.0;
 		}
+	},
+	
+	INVERSE {
+		public double operation(double operande) {
+			return 1/operande;
+		}
+		
+		public double operation(double operande1, double operande2) {
+			return 0.0;
+		}
+	},
+	
+	OPPOSE {
+		public double operation(double operande) {
+			return -operande;
+		}
+		
+		public double operation(double operande1, double operande2) {
+			return 0.0;
+		}
 	};
 
 	public abstract double operation(double operande1, double operande2);

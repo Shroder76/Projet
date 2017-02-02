@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class Calculatrice {
 	private Stack<Double> pile;
-	private final String[] operateurs = {"+", "PLUS", "-", "MOINS", "*", "FOIS", "/", "DIVISE", "SQRT", "RACINE", "CARRE", "SIN", "COS", "TAN"};
+	private final String[] operateurs = {"+", "PLUS", "-", "MOINS", "*", "FOIS", "/", "DIVISE", "SQRT", "RACINE", "CARRE", "SIN", "COS", "TAN", "INVERSE", "INV", "OPPOSE", "OPP"};
 	private Operateur operateur;
 	private int nbOperande;
 	
@@ -80,7 +80,19 @@ public class Calculatrice {
 			case "TAN" :
 				operateur = Operateur.TAN;
 				this.nbOperande = 1;
-				break;	
+				break;
+				
+			case "INV" :
+			case "INVERSE" :
+				operateur = Operateur.INVERSE;
+				this.nbOperande = 1;
+				break;
+				
+			case "OPP" :
+			case "OPPOSE" :
+				operateur = Operateur.OPPOSE;
+				this.nbOperande = 1;
+				break;
 		}
 	}
 	
